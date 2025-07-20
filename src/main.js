@@ -21,8 +21,8 @@ const helpTexts = {
 };
 
 function renderBurger() {
-  return `<button class="burger" id="burger-btn" aria-label="Open menu">
-    <span></span><span></span><span></span>
+  return `<button class="cross-btn" id="burger-btn" aria-label="Open menu">
+    <span class="cross-icon"></span>
   </button>`;
 }
 
