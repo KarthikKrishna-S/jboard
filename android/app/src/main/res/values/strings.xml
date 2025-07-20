@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">mPower LeaderBoard</string>
+    <string name="title_activity_main">mPower LeaderBoard</string>
+    <string name="package_name">com.synergysquad.app</string>
+    <string name="custom_url_scheme">com.synergysquad.app</string>
+</resources>
