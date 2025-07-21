@@ -202,11 +202,13 @@ function render(page) {
         const delta = parseInt(btn.getAttribute('data-delta'), 10);
         btn.disabled = true;
         try {
-          await fetch('https://mpower-leaderboard.onrender.com/api/teams/update-score', {
+          const resp = await fetch('https://mpowerleaderboard.onrender.com/api/teams/update-score', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name: teamName, delta })
           });
+          const data = await resp.json();
+          console.log('Update response:', data);
           await fetchTeamsAndRender();
         } catch (err) {
           alert('Failed to update score.');
@@ -225,7 +227,7 @@ function render(page) {
       const value = parseInt(document.getElementById('custom-score-input').value, 10);
       if (!value || value <= 0) return alert('Enter a positive number');
       try {
-        await fetch('https://mpower-leaderboard.onrender.com/api/teams/update-score', {
+        await fetch('https://mpowerleaderboard.onrender.com/api/teams/update-score', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name: teamName, delta: value })
@@ -241,7 +243,7 @@ function render(page) {
       const value = parseInt(document.getElementById('custom-score-input').value, 10);
       if (!value || value <= 0) return alert('Enter a positive number');
       try {
-        await fetch('https://mpower-leaderboard.onrender.com/api/teams/update-score', {
+        await fetch('https://mpowerleaderboard.onrender.com/api/teams/update-score', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name: teamName, delta: -value })
@@ -309,7 +311,7 @@ function handleHashChange() {
 
 async function fetchTeamsAndRender() {
   try {
-    const res = await fetch('https://mpower-leaderboard.onrender.com/api/teams');
+    const res = await fetch('https://mpowerleaderboard.onrender.com/api/teams');
     if (!res.ok) throw new Error('Failed to fetch teams');
     teams = await res.json();
     // Sort teams by score descending
